@@ -37,7 +37,7 @@ public class GoF_Patterns_Composite {
     }
 
     //Компоненты могут расширять другие компоненты
-    static class Book extends Item{
+    static class Book extends Item {
         int numberofpages;
         Book(int weight, int size,int numberofpages) {
             super(weight, size);
