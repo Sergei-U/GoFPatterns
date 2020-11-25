@@ -4,39 +4,42 @@
  */
 public class GoF_Patterns_Adapter {
 
-/**    Адаптер — это структурный паттерн проектирования,
-*      который позволяет объектам с несовместимыми интерфейсами работать вместе.
-  */
+    /**
+     * Адаптер — это структурный паттерн проектирования,
+     * который позволяет объектам с несовместимыми интерфейсами работать вместе.
+     */
 
-    static class DocProccer{
+    static class DocProccer {
         //особый метод для работы с JSON, доступен только в JSON-формате
-        public void runJson(JSON json){
+        public void runJson(JSON json) {
             System.out.println(json.getJSONText());
         }
     }
 
-    static class JSON{
+    static class JSON {
         //класс для работы с JSON
 
-        public String getJSONText(){
+        public String getJSONText() {
             return "JSON: text";
         }
     }
 
-    static class XML{
+    static class XML {
         //некоторый класс для работы с XML
         //который можем принимать, но программа работает только с JSON
-        public String getXMLText(){
+        public String getXMLText() {
             return "XML <text>";
         }
     }
 
-    static class XmlToJsonAdapter extends JSON{
+    static class XmlToJsonAdapter extends JSON {
         String strangesymblos;
-        XmlToJsonAdapter(XML xml){
-            this.strangesymblos=xml.getXMLText();
+
+        XmlToJsonAdapter(XML xml) {
+            this.strangesymblos = xml.getXMLText();
         }
-        public String getJSONText(){
+
+        public String getJSONText() {
             //Условно волшебный код
             //Превращает строку вида "XML <text>" в "JSON: text"
             // return convert(strangesymblos)
@@ -45,6 +48,7 @@ public class GoF_Patterns_Adapter {
         }
 
     }
+
     public static void main(String[] args) {
         DocProccer docProccer = new DocProccer();
 

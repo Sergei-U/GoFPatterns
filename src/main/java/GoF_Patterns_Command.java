@@ -11,26 +11,29 @@ public class GoF_Patterns_Command {
      */
 
     //Класс кнопки
-    static class Button{
+    static class Button {
         String buttonName;
-        Button(String buttonName){
-            this.buttonName=buttonName;
+
+        Button(String buttonName) {
+            this.buttonName = buttonName;
         }
-        void pressButton(){
+
+        void pressButton() {
             System.out.println("Whoops, button pressed");
         }
     }
 
     //Интерфейс команд
-    public interface Command{
+    public interface Command {
         void execute();
     }
 
     //Команда нажатия на кнопку, инкапсулированная
-    public static class PressTheButtonNow implements Command{
+    public static class PressTheButtonNow implements Command {
         Button thebutton;
-        PressTheButtonNow(Button button){
-            this.thebutton=button;
+
+        PressTheButtonNow(Button button) {
+            this.thebutton = button;
         }
 
         @Override
@@ -38,13 +41,16 @@ public class GoF_Patterns_Command {
             thebutton.pressButton();
         }
     }
+
     //И теперь нам необходим вызывающий методы класс (англ. Invoker =) )
-    public static class Invoker{
+    public static class Invoker {
         private Command buttonPressComand;
-        Invoker(Command command){
+
+        Invoker(Command command) {
             this.buttonPressComand = command;
         }
-        public void press(){
+
+        public void press() {
             buttonPressComand.execute();
         }
     }
@@ -52,7 +58,8 @@ public class GoF_Patterns_Command {
 
     public static void main(String[] args) {
         Button button = new Button("Help button");
-        Command commandThePress = new PressTheButtonNow(button); ;
+        Command commandThePress = new PressTheButtonNow(button);
+        ;
         Invoker invoker = new Invoker(commandThePress);
         invoker.press();
     }

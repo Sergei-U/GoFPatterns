@@ -8,23 +8,28 @@ public class GoF_Patterns_Bridge {
     // абстракцию и реализацию, чтобы можно было изменять их независимо друг от друга.
 
     //класс продавца
-    static class Seller{
+    static class Seller {
         protected Terminal terminal;
-        Seller(Terminal terminal){
-            this.terminal=terminal;
+
+        Seller(Terminal terminal) {
+            this.terminal = terminal;
         }
-        void makeBill(int cost){
+
+        void makeBill(int cost) {
             terminal.bill(cost);
         }
-        void startWork(){
+
+        void startWork() {
             terminal.powerOn();
         }
-        void restartWork(){
+
+        void restartWork() {
             terminal.makeXreport();
             terminal.powerOff();
             terminal.powerOn();
         }
-        void endWork(){
+
+        void endWork() {
             terminal.makeZreport();
             terminal.powerOff();
         }
@@ -32,22 +37,26 @@ public class GoF_Patterns_Bridge {
     }
 
     //интерфейс терминала
-    interface Terminal{
+    interface Terminal {
         void powerOn();
+
         void powerOff();
+
         void makeZreport();
+
         void makeXreport();
+
         void bill(int cost);
     }
 
     //Также мы теперь можем расширить класс продавца, не трогая его методы
-    public static class AdvancedSeller extends Seller{
+    public static class AdvancedSeller extends Seller {
         AdvancedSeller(Terminal terminal) {
             super(terminal);
         }
 
         //функция печати чека со стоимостью услуг 0
-        void zerobill(){
+        void zerobill() {
             terminal.bill(0);
         }
     }
@@ -55,29 +64,46 @@ public class GoF_Patterns_Bridge {
     //У каждой конечной кассы будет один фискальный регистратор
     //касса тут понятие общее, а вот фискальный регистратор – та штука, что печатает чеки
 
-    static class KassaOne implements Terminal{
+    static class KassaOne implements Terminal {
         @Override
-        public void powerOn() {}
+        public void powerOn() {
+        }
+
         @Override
-        public void powerOff() {}
+        public void powerOff() {
+        }
+
         @Override
-        public void makeZreport() {}
+        public void makeZreport() {
+        }
+
         @Override
-        public void makeXreport() {}
+        public void makeXreport() {
+        }
+
         @Override
         public void bill(int cost) {
             System.out.println(cost);
         }
     }
-    static class KassaTwo implements Terminal{
+
+    static class KassaTwo implements Terminal {
         @Override
-        public void powerOn() {}
+        public void powerOn() {
+        }
+
         @Override
-        public void powerOff() {}
+        public void powerOff() {
+        }
+
         @Override
-        public void makeZreport() {}
+        public void makeZreport() {
+        }
+
         @Override
-        public void makeXreport() {}
+        public void makeXreport() {
+        }
+
         @Override
         public void bill(int cost) {
             System.out.println(cost);

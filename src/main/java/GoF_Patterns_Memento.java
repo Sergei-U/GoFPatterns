@@ -10,9 +10,9 @@ public class GoF_Patterns_Memento {
      */
 
     //Класс карты
-    static class EditMap{
+    static class EditMap {
         //Внутреннее состояние объектов, которые и надо хранить
-        private int x,y;
+        private int x, y;
         private String string;
 
         public int getX() {
@@ -38,23 +38,26 @@ public class GoF_Patterns_Memento {
         public void setString(String string) {
             this.string = string;
         }
-        Snapshot createSnapshot(){
-            return new Snapshot(this,x,y,string);
+
+        Snapshot createSnapshot() {
+            return new Snapshot(this, x, y, string);
         }
     }
-    static class Snapshot{
+
+    static class Snapshot {
         EditMap editMap;
-        private int x,y;
+        private int x, y;
         private String string;
 
         public Snapshot(EditMap editMap, int x, int y, String string) {
-            this.editMap=editMap;
-            this.x=x;
-            this.y=y;
-            this.string=string;
+            this.editMap = editMap;
+            this.x = x;
+            this.y = y;
+            this.string = string;
         }
+
         //Метод для восстановления из снапшота
-        void restore(){
+        void restore() {
             editMap.setX(x);
             editMap.setY(y);
             editMap.setString(string);
@@ -69,13 +72,16 @@ public class GoF_Patterns_Memento {
     static class Command {
         EditMap editMap;
         Snapshot backup;
-        Command(EditMap editMap){
-            this.editMap=editMap;
+
+        Command(EditMap editMap) {
+            this.editMap = editMap;
         }
-        void makeBackup(){
-            backup=editMap.createSnapshot();
+
+        void makeBackup() {
+            backup = editMap.createSnapshot();
         }
-        void undo(){
+
+        void undo() {
             backup.restore();
         }
     }

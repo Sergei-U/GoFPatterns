@@ -17,7 +17,7 @@ public class GoF_Patterns_Composite {
         void print();
     }
     // минимальный компонент
-    class Item implements CustomItem{
+    static class Item implements CustomItem{
         int weight;
         int size;
         Item(int weight,int size){

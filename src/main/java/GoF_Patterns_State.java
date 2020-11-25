@@ -11,17 +11,19 @@ public class GoF_Patterns_State {
      */
 
 
-    abstract static class State{
+    abstract static class State {
         Article article;
-        State(Article article){
+
+        State(Article article) {
             this.article = article;
         }
+
         //Наш абстрактный метод, который для разных состояний будет разный
         abstract void publish();
     }
 
     //Конкретное состояние
-    static class Draft extends State{
+    static class Draft extends State {
 
         Draft(Article article) {
             super(article);
@@ -32,8 +34,9 @@ public class GoF_Patterns_State {
 
         }
     }
+
     //Ещё одно состояние
-    static class Moderation extends State{
+    static class Moderation extends State {
 
         Moderation(Article article) {
             super(article);
@@ -44,21 +47,27 @@ public class GoF_Patterns_State {
 
         }
     }
-    static class Article{
+
+    static class Article {
         private State state;
-        public Article(){
-            this.state= new Draft(this);
+
+        public Article() {
+            this.state = new Draft(this);
         }
+
         public void changeState(State state) {
             this.state = state;
         }
     }
+
     static class UI {
         private Article article;
+
         public UI(Article article) {
             this.article = article;
         }
-        void changeState(){
+
+        void changeState() {
             article.changeState(new Moderation(article));
         }
     }

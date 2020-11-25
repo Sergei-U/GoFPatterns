@@ -5,29 +5,33 @@ import java.util.ArrayList;
  * @version 1.0.0
  */
 public class GoF_Patterns_Prototype {
-    abstract static class WObject{
+    abstract static class WObject {
         int x;
         int y;
         double z;
-        WObject (){
-            x=0;
-            y=0;
-            z=0.15;
+
+        WObject() {
+            x = 0;
+            y = 0;
+            z = 0.15;
         }
-        WObject (WObject object){
-            this.x=object.x;
-            this.y=object.y;
-            this.z=object.z;
+
+        WObject(WObject object) {
+            this.x = object.x;
+            this.y = object.y;
+            this.z = object.z;
         }
+
         public abstract Object clone();
 
     }
 
-    static class RealObjectOne extends WObject{
+    static class RealObjectOne extends WObject {
         int weight;
-        RealObjectOne(RealObjectOne realObjectOne){
+
+        RealObjectOne(RealObjectOne realObjectOne) {
             super(realObjectOne);
-            this.weight=realObjectOne.weight;
+            this.weight = realObjectOne.weight;
         }
 
         public RealObjectOne() {
@@ -39,13 +43,16 @@ public class GoF_Patterns_Prototype {
             return new RealObjectOne(this);
         }
     }
-    static class RealObjectTwo extends WObject{
+
+    static class RealObjectTwo extends WObject {
         int weight;
         int anotherint;
-        RealObjectTwo(RealObjectTwo realObjectTwo){
+
+        RealObjectTwo(RealObjectTwo realObjectTwo) {
             super(realObjectTwo);
-            this.weight=realObjectTwo.weight;
-            this.anotherint= realObjectTwo.anotherint;;
+            this.weight = realObjectTwo.weight;
+            this.anotherint = realObjectTwo.anotherint;
+            ;
         }
 
         public RealObjectTwo() {
@@ -62,8 +69,8 @@ public class GoF_Patterns_Prototype {
     public static void main(String[] args) {
 
         //Создаём наши два объекта
-        RealObjectOne realObjectOne= new RealObjectOne();
-        RealObjectTwo realObjecTwo= new RealObjectTwo();
+        RealObjectOne realObjectOne = new RealObjectOne();
+        RealObjectTwo realObjecTwo = new RealObjectTwo();
         ArrayList list = new ArrayList();
         list.add(realObjectOne);
         list.add(realObjecTwo);

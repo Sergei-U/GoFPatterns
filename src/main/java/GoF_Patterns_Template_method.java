@@ -11,18 +11,20 @@ public class GoF_Patterns_Template_method {
      */
 
     //шаблонный метод
-    abstract static class DocWork{
+    abstract static class DocWork {
         //Некоторые методы общие, можем прямо тут расписать
-        void loadDoc(){
+        void loadDoc() {
             System.out.println("DocLoaded");
         }
+
         //Какие то потом
         abstract void rework();
+
         abstract void exit();
     }
 
     //Подлассы реализуют шаги сами, не трогая шаблонный метод
-    static class PDF extends DocWork{
+    static class PDF extends DocWork {
 
         @Override
         void rework() {
@@ -34,7 +36,8 @@ public class GoF_Patterns_Template_method {
             System.out.println("Конец PDF");
         }
     }
-    static class CSV extends DocWork{
+
+    static class CSV extends DocWork {
 
         @Override
         void rework() {
@@ -52,8 +55,7 @@ public class GoF_Patterns_Template_method {
         //Выберем стратегию в зависимости от наших условий
         if (true) {
             docWork = new PDF();
-        }
-        else {
+        } else {
             docWork = new CSV();
         }
         docWork.loadDoc();

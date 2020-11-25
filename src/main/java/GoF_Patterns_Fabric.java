@@ -5,12 +5,12 @@
 public class GoF_Patterns_Fabric {
 
     //Паттерн применим только когда есть иерархия продуктов
-    interface Delivery{
+    interface Delivery {
         void supply();
     }
 
     //Человек доставляет
-    static class Human implements Delivery{
+    static class Human implements Delivery {
         @Override
         public void supply() {
             System.out.println("Human supply");
@@ -18,7 +18,7 @@ public class GoF_Patterns_Fabric {
     }
 
     //Или велосипед
-    static class Bike implements Delivery{
+    static class Bike implements Delivery {
         @Override
         public void supply() {
             System.out.println("Bike supply");
@@ -26,23 +26,26 @@ public class GoF_Patterns_Fabric {
     }
 
     //Абстрактный класс доставки
-    static abstract class MakeDelivery{
-        void runDelivery(){
+    static abstract class MakeDelivery {
+        void runDelivery() {
             Delivery delivery = createDelivery();
             delivery.supply();
         }
+
         //Абстрактный фабричный метод доставки
         abstract Delivery createDelivery();
     }
+
     // Конкретные фабрики переопределяют фабричный метод и
     // возвращают из него собственные продукты.
-    static class BikeSupp extends MakeDelivery{
-        Delivery createDelivery(){
+    static class BikeSupp extends MakeDelivery {
+        Delivery createDelivery() {
             return new Bike();
         }
     }
-    static class HumanSupp extends MakeDelivery{
-        Delivery createDelivery(){
+
+    static class HumanSupp extends MakeDelivery {
+        Delivery createDelivery() {
             return new Human();
         }
     }
@@ -50,10 +53,9 @@ public class GoF_Patterns_Fabric {
     public static void main(String[] args) {
         MakeDelivery delivery;
         //Создаем доставку в зависимости от условий
-        if (true){
-            delivery=new BikeSupp();
-        }else
-        {
+        if (true) {
+            delivery = new BikeSupp();
+        } else {
             delivery = new HumanSupp();
         }
         //остальной клиентский код работает с фабриками и

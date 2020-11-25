@@ -13,12 +13,15 @@ public class GoF_Patterns_Visitor {
      */
 
     //какая-то сложная невнятная иерархия объектов
-    interface Dott{
+    interface Dott {
         void run();
+
         void test(int x);
+
         void doDott(Visitor visitor);
 
     }
+
     static class Point implements Dott {
 
         @Override
@@ -28,7 +31,7 @@ public class GoF_Patterns_Visitor {
 
         @Override
         public void test(int x) {
-            System.out.println("run point x"+x);
+            System.out.println("run point x" + x);
         }
 
         @Override
@@ -37,7 +40,7 @@ public class GoF_Patterns_Visitor {
         }
     }
 
-    static class OtherObject implements Dott{
+    static class OtherObject implements Dott {
 
         @Override
         public void run() {
@@ -46,7 +49,7 @@ public class GoF_Patterns_Visitor {
 
         @Override
         public void test(int x) {
-            System.out.println("run OtherObject "+ x);
+            System.out.println("run OtherObject " + x);
         }
 
         @Override
@@ -57,8 +60,9 @@ public class GoF_Patterns_Visitor {
 
     //интерефейс посетителя
     //По сути он позволяет добавлять новые данные, не изменяя старых методов
-    interface Visitor{
+    interface Visitor {
         void runPoint(Point point);
+
         void runOtherObject(OtherObject otherObject);
     }
 
@@ -67,7 +71,7 @@ public class GoF_Patterns_Visitor {
     // Посетителя выгодно применять, когда новые элементы
     // добавляются очень редко, а новые операции – часто.
 
-    static class AdvancedVisitor implements Visitor{
+    static class AdvancedVisitor implements Visitor {
 
         @Override
         public void runPoint(Point point) {
